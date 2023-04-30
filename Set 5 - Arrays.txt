@@ -1,0 +1,314 @@
+Sum and average of 1D array
+
+#include <stdio.h>
+int main()
+{
+    int Arr[100], n, i, sum = 0;
+    printf("Enter the number of elements you want to insert : ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter element %d : \n", i + 1);
+        scanf("%d", &Arr[i]);
+        sum += Arr[i];
+    }
+    printf("\nThe sum of the array is : %d", sum);
+    printf("\nThe average of the array is : %0.2f", (float)sum / n);
+    return 0;
+}
+------------------------------------------------------------------------------------
+Min and Max of 1D array
+
+#include<stdio.h>
+int main()
+{
+    int a[1000],i,n,min,max;  
+    printf("Enter size of the array : ");
+    scanf("%d",&n);
+    printf("Enter elements in array : ");
+    for(i=0; i<n; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    min=max=a[0];
+    for(i=1; i<n; i++)
+    {
+         if(min>a[i])
+		  min=a[i];   
+		   if(max<a[i])
+		    max=a[i];       
+    }
+     printf("minimum of array is : %d",min);
+          printf("\nmaximum of array is : %d",max);
+    return 0;
+}
+----------------------------------------------------------------------------
+Reverse the array elements
+
+#include<stdio.h>
+int main()
+{
+   int num, i, j, array1[50], array2[50];
+   printf("Enter no of elements in array");
+   scanf("%d", &num);
+   printf("Enter array elements");
+   for (i = 0; i < num ; i++)
+      scanf("%d", &array1[i]);
+   for (i = num - 1, j = 0; i >= 0; i--,j++)
+      array2[j] = array1[i];
+   for (i = 0; i < num; i++)
+      array1[i] = array2[i];
+   printf("The reversed array:");
+   for (i = 0; i< num; i++)
+      printf("%d", array1[i]);
+   return 0;
+}
+------------------------------------------------------------------
+Difference between even and odd elements
+
+#include <stdio.h>
+int main() {
+    int arr[100];
+    int n, sum_even = 0, sum_odd = 0;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) 
+	{
+        scanf("%d", &arr[i]);
+    }
+    for (int i = 0; i < n; i++) 
+	{
+        if (arr[i] % 2 == 0) 
+		{
+            sum_even += arr[i];
+        } else 
+		{
+            sum_odd += arr[i];
+        }
+    }
+    int diff = sum_even - sum_odd;
+    printf("Sum of even elements: %d\n", sum_even);
+    printf("Sum of odd elements: %d\n", sum_odd);
+    printf("Difference between even and odd elements: %d\n", diff);
+    return 0;
+}
+--------------------------------------------------------------------------------
+Difference between even and odd indexed elements
+
+#include <stdio.h>
+int main() 
+{
+    int arr[100];
+    int n, sum_even = 0, sum_odd = 0;
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) 
+	{
+        scanf("%d", &arr[i]);
+    }
+    for (int i = 0; i < n; i++) 
+	{
+        if (i % 2 == 0) 
+		{
+            sum_even += arr[i];
+        } else 
+		{
+            sum_odd += arr[i];
+        }
+    }
+    int diff = sum_even - sum_odd;
+    printf("Sum of even-indexed elements: %d\n", sum_even);
+    printf("Sum of odd-indexed elements: %d\n", sum_odd);
+    printf("Difference between even-indexed and odd-indexed elements: %d\n", diff);
+    return 0;
+}
+----------------------------------------------------------------------------------------------------
+Decimal to Bin/Octal/Hexa conversion
+
+#include <stdio.h>
+void decToBin(int num);
+void decToOct(int num);
+void decToHex(int num);
+int main() 
+{
+    int num;
+    printf("Enter a decimal number: ");
+    scanf("%d", &num);
+    decToBin(num);
+    decToOct(num);
+    decToHex(num);
+    return 0;
+}
+
+void decToBin(int num) 
+{
+    int bin[32];
+    int i = 0;
+    while (num > 0) 
+	{
+        bin[i] = num % 2;
+        num /= 2;
+        i++;
+    }
+    printf("Binary No: ");
+    for (int j = i - 1; j >= 0; j--) 
+	{
+        printf("%d", bin[j]);
+    }
+    printf("\n");
+}
+
+void decToOct(int num) 
+{
+    int oct[32];
+    int i = 0;
+    while (num > 0) 
+	{
+        oct[i] = num % 8;
+        num /= 8;
+        i++;
+    }
+    printf("Octal No: ");
+    for (int j = i - 1; j >= 0; j--) 
+	{
+        printf("%d", oct[j]);
+    }
+    printf("\n");
+}
+
+void decToHex(int num) 
+{
+    char hex[32];
+    int i = 0;
+    while (num > 0) 
+	{
+        int rem = num % 16;
+        if (rem < 10) 
+		{
+            hex[i] = rem + '0';
+        } else 
+		{
+            hex[i] = rem + 55;
+        }
+        num /= 16;
+        i++;
+    }
+    printf("Hex No: ");
+    for (int j = i - 1; j >= 0; j--) 
+	{
+        printf("%c", hex[j]);
+    }
+    printf("\n");
+}
+--------------------------------------------------------------------
+Binary/Octal/Hex to Decimal Conversion
+
+#include <stdio.h>
+#include <math.h>
+
+int binaryToDecimal(int num) {
+    if(num == 0) {
+        return 0;
+    }
+    else {
+        return (num % 10) + 2 * binaryToDecimal(num / 10);
+    }
+}
+
+int main() {
+    int num;
+    printf("Enter a binary number: ");
+    scanf("%d", &num);
+    printf("Decimal equivalent: %d\n", binaryToDecimal(num));
+    return 0;
+}
+--------------------------------------------------------------------------------
+No. of days elapsed
+
+#include <stdio.h>
+int main() 
+{
+    int day, month, year, daysElapsed = 0, i;
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};   
+    printf("Enter date in ddmmyy format: ");
+    scanf("%2d%2d%2d", &day, &month, &year);
+    for (i = 0; i < month - 1; i++)
+	{
+        daysElapsed += daysInMonth[i];
+    }
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) 
+	{
+        daysElapsed++;
+        daysInMonth[1] = 29;
+    }
+    daysElapsed += day;
+    printf("Number of days elapsed: %d\n", daysElapsed); 
+    return 0;
+}
+-------------------------------------------------------------------------------------
+Bubble sort
+
+#include <stdio.h>
+int main() {
+   int arr[100], n, i, j, temp;  
+   printf("Enter the size of array: ");
+   scanf("%d", &n);
+   printf("Enter %d elements:\n", n);
+   for(i = 0; i < n; i++) 
+   {
+      scanf("%d", &arr[i]);
+   }
+   for(i = 0; i < n-1; i++) 
+   {
+      for(j = 0; j < n-i-1; j++) 
+	  {
+         if(arr[j] > arr[j+1]) 
+		 {
+            temp = arr[j];
+            arr[j] = arr[j+1];
+            arr[j+1] = temp;
+         }
+      }
+   }
+   printf("\nSorted array in ascending order:\n");
+   for(i = 0; i < n; i++) 
+   {
+      printf("%d ", arr[i]);
+   }
+   return 0;
+}
+
+-----------------------------------------------------------------------
+Linear search
+
+#include <stdio.h>
+int main() 
+{
+    int n, key, found = 0;
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+    int arr[n];
+    printf("Enter %d integers:\n", n);
+    for (int i = 0; i < n; i++) 
+	{
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the element to be searched: ");
+    scanf("%d", &key);
+    for (int i = 0; i < n; i++) 
+	{
+        if (arr[i] == key) 
+		{
+            found = 1;
+            printf("%d found at position %d.\n", key, i+1);
+            break;
+        }
+    }
+    if (!found) 
+	{
+        printf("%d not found in the array.\n", key);
+    }
+    return 0;
+}

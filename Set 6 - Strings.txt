@@ -1,0 +1,222 @@
+Toggle case
+
+#include <stdio.h>
+#include <ctype.h>
+void toggleCase(char str[]) 
+{
+    int i = 0;
+    while (str[i] != '\0') 
+	{
+        if (isupper(str[i])) 
+		{
+            str[i] = tolower(str[i]);
+        }
+        else if (islower(str[i])) 
+		{
+            str[i] = toupper(str[i]);
+        }
+        i++;
+    }
+}
+int main() 
+{
+    char str[100];
+    printf("Enter a string: ");
+    fgets(str, 100, stdin);
+    toggleCase(str);
+    printf("Toggled string: %s", str);
+    return 0;
+}
+------------------------------------------------------------------------
+Convert string as integer
+
+#include <stdio.h>
+#include <string.h>
+int main() 
+{
+    char str[100];
+    int res = 0, i;
+    printf("Enter a string: ");
+    scanf("%s", str);
+    for (i = 0; str[i] != '\0'; i++) 
+	{
+        int val = str[i] - '0';
+        res = res * 10 + val;
+    }
+    printf("Converted integer value: %d\n", res);
+    return 0;
+}
+-------------------------------------------------------------------
+Compute total seconds
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main() 
+{
+    char time[9];
+    int hh, mm, ss, total_seconds;
+    printf("Enter time in hh:mm:ss format: ");
+    fgets(time, sizeof(time), stdin);
+    hh = atoi(strtok(time, ":"));
+    mm = atoi(strtok(NULL, ":"));
+    ss = atoi(strtok(NULL, ":"));
+    total_seconds = hh * 3600 + mm * 60 + ss;
+    printf("Total seconds: %d\n", total_seconds);
+    return 0;
+}
+-----------------------------------------------------------------
+Count number of days
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int main()
+{
+    char date[11];
+    int day, month, year, i, days_elapsed = 0;
+    int days_in_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    printf("Enter date in format DD/MM/YYYY: ");
+    scanf("%s", date);
+    day = atoi(strtok(date, "/"));
+    month = atoi(strtok(NULL, "/"));
+    year = atoi(strtok(NULL, "/"));
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+        days_in_month[1] = 29;
+    for (i = 0; i < month - 1; i++)
+        days_elapsed += days_in_month[i];
+    days_elapsed += day;
+    printf("Number of days elapsed since the start of the year: %d\n", days_elapsed);
+    return 0;
+}
+--------------------------------------------------------------------------------------------------
+Rotate string
+
+#include <stdio.h>
+#include <string.h>
+void rotateLeft(char* str, int k) 
+{
+    int len = strlen(str);
+    k = k % len;
+    for (int i = 0; i < k; i++) 
+	{
+        char temp = str[0];
+        for (int j = 0; j < len - 1; j++) 
+		{
+            str[j] = str[j + 1];
+        }
+        str[len - 1] = temp;
+    }
+}
+
+void rotateRight(char* str, int k) 
+{
+    int len = strlen(str);
+    k = k % len;
+    for (int i = 0; i < k; i++) 
+	{
+        char temp = str[len - 1];
+        for (int j = len - 1; j > 0; j--) 
+		{
+            str[j] = str[j - 1];
+        }
+        str[0] = temp;
+    }
+}
+
+int main() 
+{
+    char str[100];
+    int k;
+    char direction;    
+    printf("Enter a string: ");
+    scanf("%s", str);    
+    printf("Enter the number of characters to rotate: ");
+    scanf("%d", &k);   
+    printf("Enter direction of rotation (L/R): ");
+    scanf(" %c", &direction);   
+    if (direction == 'L' || direction == 'l') 
+	{
+        rotateLeft(str, k);
+    } else if (direction == 'R' || direction == 'r') 
+	{
+        rotateRight(str, k);
+    } else 
+	{
+        printf("Invalid direction\n");
+        return 0;
+    }    
+    printf("Rotated string: %s\n", str);
+    return 0;
+}
+----------------------------------------------------------------------------------
+Data validation
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() 
+{
+    char email[50];
+    int i, at_position = -1, dot_position = -1;
+    int valid_username = 1, valid_domain = 1, valid_extension = 1;
+    printf("Enter email address: ");
+    scanf("%s", email);
+    for (i = 0; email[i] != '\0'; i++) 
+	{
+        if (email[i] == '@') 
+		{
+            if (at_position == -1) 
+			{
+                at_position = i;
+            } else 
+			{
+                valid_username = 0;
+                break;
+            }
+        } else if (email[i] == '.') 
+		{
+            if (dot_position == -1) 
+			{
+                dot_position = i;
+            } else 
+			{
+                valid_domain = 0;
+                break;
+            }
+        }
+    }
+    for (i = 0; i < at_position; i++) 
+	{
+        if (!isalnum(email[i]) && email[i] != '.') 
+		{
+            valid_username = 0;
+            break;
+        }
+    }
+    for (i = at_position+1; i < dot_position; i++) 
+	{
+        if (!isalpha(email[i])) 
+		{
+            valid_domain = 0;
+            break;
+        }
+    }
+    for (i = dot_position+1; email[i] != '\0'; i++) 
+	{
+        if (!isalpha(email[i]) || !islower(email[i])) 
+		{
+            valid_extension = 0;
+            break;
+        }
+    }
+    if (at_position != -1 && dot_position != -1 &&
+        valid_username && valid_domain && valid_extension) 
+		{
+        printf("Valid email address\n");
+    } else 
+	{
+        printf("Invalid email address\n");
+    }
+    return 0;
+}

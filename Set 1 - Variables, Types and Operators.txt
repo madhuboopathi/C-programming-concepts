@@ -1,0 +1,168 @@
+WARM UP
+
+*Hello World*
+
+#include<stdio.h>
+int main()
+{
+	printf("Hello World");
+	return 0;
+}
+-------------------------------------------------
+
+*Addition of 2 numbers*
+
+#include<stdio.h>
+int main()
+{
+	int num1,num2,sum;
+	printf("Enter two integers:");
+	scanf("%d %d",&num1,&num2);
+	sum=num1+num2;
+	printf("%d+%d=%d",num1,num2,sum);
+	return 0;
+}
+---------------------------------------------------------
+Calculate a+b*c
+
+#include<stdio.h>
+int main()
+{
+	int a,b,c,result;
+	printf("Enter the numbers:");
+	scanf("%d %d %d",&a,&b,&c);
+	result=(a+b)*c;
+	printf("(%d+%d)*%d=%d",a,b,c,result);
+	return 1;
+}
+----------------------------------------------------------------
+Area of circle
+
+#include<stdio.h>
+int main()
+{
+	int radius,area;
+	float PI=3.14;
+	printf("Enter the radius:");
+	scanf("%d",&radius);
+	area=PI*radius*radius;
+	printf("Area of circle=%d",area);
+	return 0;
+}
+--------------------------------------------------------------
+Temperature conversions
+//Celsius to Fahrenheit
+
+#include<stdio.h>
+int main()
+{
+	double tf,tc;
+	printf("Enter Temperature in Celsius:");
+	scanf("%lf",&tc);
+	tf=(tc)*9/5+32;
+	printf("Temperature in Fahrenheit=%.2lf",tf);
+	return 0;
+}
+------------------------------------------------------------
+//Fahrenheit to Celsius
+
+#include<stdio.h>
+int main()
+{
+	double tf,tc;
+	printf("Enter Temperature in Fahrenheit:");
+	scanf("%lf",&tf);
+	tc=(tf-32)*5/9;
+	printf("Temperature in Celsius=%.2lf",tc);
+	return 0;
+}
+----------------------------------------------------------------
+Simple interest
+
+#include<stdio.h>
+int main()
+{
+	double p,n,r,si;
+	printf("Enter the principle amount:");
+	scanf("%lf",&p);
+	printf("Enter the duration in years:");
+	scanf("%lf",&n);
+	printf("Enter the rate of interest:");
+	scanf("%lf",&r);
+	si=(p*n*r)/100;
+	printf("The Simple interest is=%.2lf",si);
+	return 0;
+}
+--------------------------------------------------------------------
+Swap two numbers
+
+#include<stdio.h>
+int main()
+{
+	int a,b,temp;
+	printf("Enter the value of a:");
+	scanf("%d",&a);
+	printf("Enter the value of b:");
+	scanf("%d",&b);
+	temp=a;
+	a=b;
+	b=temp;
+	printf("After swapping, the value of a=%d\n and the value of b=%d\n",a,b);
+	return 0;
+}
+-------------------------------------------------------------------------------------------
+Reverse of 3 digit number
+
+#include<stdio.h>
+int main()
+{
+	int a,b,c,rev;
+	int num=375;
+	a=num/100;
+	b=(num%100)/10;
+	c=num%10;
+	rev=c*100+b*10+a;
+	printf("Initial number=%d\n",num);
+	printf("Reversed number=%d",rev);
+	return 0;
+}
+---------------------------------------------------------------------------
+Reverse of 4 digit number
+
+#include<stdio.h>
+int main()
+{
+	int a,b,c,d,rev;
+	int num=4375;
+	a=num/1000;
+	b=(num%1000)/100;
+	c=(num%100)/10;
+	d=num%10;
+	rev=d*1000+c*100+b*10+a;
+	printf("Initial number=%d\n",num);
+	printf("Reversed number=%d",rev);
+	return 0;
+}
+----------------------------------------------------------------
+Sum of ASCII value
+
+#include <stdio.h>
+int main() 
+{
+    char c1, c2, c3;
+    int sum;
+    printf("Enter first character:");
+    scanf("%c",&c1);
+    printf("Enter second character:");
+    scanf(" %c",&c2); 
+    printf("Enter third character:");
+    scanf("%c",&c3);
+    sum = (int) c1 + (int) c2 + (int) c3;
+    printf("Sum of ASCII values: %d\n", sum);
+    return 0;
+} 
+
+
+
+
+
